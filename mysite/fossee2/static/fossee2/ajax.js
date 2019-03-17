@@ -4,21 +4,45 @@
         
         inputDocument.addEventListener('change',function(e){
             for(var i =0;i<inputDocument.files.length;i++){
-                fileList.push(inputDocument.files[i]);
-                console.log('is it adsadfding Document');
+                console.log(inputDocument.files[i].name);
+
+                //check if the extension of file is valid
+                name = String(inputDocument.files[i].name);
+                var l = name.split(".",2);
+                var extn = String(l[1]);
+                //if valid sendFile otherwise not
+                if(extn.localeCompare('doc')==0||extn.localeCompare('docx')==0||extn.localeCompare('pdf')==0){
+            
+                    var node = document.createElement("LI");                 // Create a <li> node
+                    var textnode = document.createTextNode(name);         // Create a text node
+                    node.appendChild(textnode);                              // Append the text to <li>
+                    document.getElementById("displayFile").appendChild(node);
+                    fileList.push(inputDocument.files[i]);
+                    console.log('sending Document');
+                }
+                else{
+                    console.log("it's not a valid extension");
+                    var node = document.createElement("LI");                 // Create a <li> node
+                    var textnode = document.createTextNode("only doc,docx and pdf's are allowed, please enter valid file extensions");         // Create a text node
+                    node.appendChild(textnode);                              // Append the text to <li>
+                    document.getElementById("displayFile").appendChild(node);
+                }
+
+
+               
             }
         })
       
         var fileCatcher = document.getElementById('file-catcher')
         fileCatcher.addEventListener('submit',function(e){
             e.preventDefault();
+            console.log(fileList.length)
             fileList.forEach(function(file){
+                sendFile(file); 
                 
-                sendFile(file);
-                console.log("sendasdfing the files");
             });
            //after sending all the files making a get request to viewDocument 
-           window.location.href="/fossee2/viewDocument";
+          window.location.href="/fossee2/successfullyUploaded";
 
         });
         

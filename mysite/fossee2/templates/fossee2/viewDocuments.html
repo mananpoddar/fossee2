@@ -1,5 +1,6 @@
 
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,19 +66,22 @@
     <div class="container">
      {% for obj in Document %}
             <div class="column">
-    
+                <a href="/static/fossee2/ViewerJS/index.html#/media/{{obj.document}}" class="btn">
                     <div class="post-module">
                       <div class="thumbnail">
-                        <img src="{% get_media_prefix %}{{ obj.document }}"/>
-                        <a href="/static/fossee2/ViewerJS/index.html#/media/{{obj.document}}" class="btn">Preview</a>
-                      </div>
+                        <img src="{% static "fossee2/files.jpg" %}"/>
+                        </div>
                       <!-- Post Content-->
+                     
                       <div class="post-content">
-                      
+                          
                         <h1 class="title">{{ caption.title }}</h1>
                         <p class="description">{{ caption.description }}</p>
+
                       </div>
+                   
                     </div>
+                  </a>
                   </div>{% endfor %}
                   
                   

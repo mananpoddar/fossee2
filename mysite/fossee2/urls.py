@@ -5,6 +5,7 @@ app_name = "fossee2"
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^uploadDocument$', views.uploadDocument, name='uploadDocument'),
+    url(r'^successfullyUploaded$', views.successfullyUploaded, name='successfullyUploaded'),
     url(r'^viewDocument$', views.viewDocument, name='viewDocument'),
 
 ]
