@@ -10,12 +10,16 @@ import os
 ntpath.basename("/media/document/")
 wdFormatPDF = 17
 
-# Create your views here.
-
+# argument: request 
+# what it does:renders the front page 
+# returns: returns the front page
 def index(request):
     return render(request,"fossee2/index.html")
 
-
+# argument: request 
+# what it does:get's the file from user one by one through ajax requests,
+#              saves it in the database.
+# returns: returns the page where user can upload the documents
 @csrf_exempt
 def uploadDocument(request):
     
@@ -40,10 +44,9 @@ def uploadDocument(request):
   
     return render(request,"fossee2/uploadDocument.html")
 
-def successfullyUploaded(request):
-    return render(request,"fossee2/successfullyUploaded.html")
-    return HttpResponseRedirect(reverse("fossee2:viewDocument",) )
-
+# argument: request 
+# what it does:gets all the documents from the database
+# returns: returns the page rendering all these documents with viewer link to it
 def viewDocument(request):
     print("viewDocument")
     caption = Caption.objects.all()[0]
@@ -57,6 +60,12 @@ def viewDocument(request):
         obj.save()
     return render(request,"fossee2/viewDocuments.html",{"caption":caption,"Document":Document})
 
+# argument:path of the file
+# what it does: since I was not able to find viewer for extensions other than pdf, 
+#               I converted the files to pdf first and saved it in the database along 
+#               with the original files, so that I can render all the files through the viewers
+#               so,basically this function converts all the files to pdf and keep a copy of that as well in database     
+# returns: doesn't return anything
 def conversiontopdf(fileUrl):
     fileUrl = '.'+fileUrl
     head, tail = ntpath.split(fileUrl)
@@ -71,5 +80,5 @@ def conversiontopdf(fileUrl):
     
 
    
-    # ./media/document/hh_jZBuu6t.jpg
+
 
