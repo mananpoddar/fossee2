@@ -41,7 +41,7 @@ def uploadDocument(request):
         Document.save()
         fileUrl = Document.document.url
         conversiontopdf(fileUrl)
-  
+        print("conversion called")
     return render(request,"fossee2/uploadDocument.html")
 
 # argument: request 
