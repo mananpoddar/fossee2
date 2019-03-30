@@ -19,7 +19,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-- Run the dev server
+- Run the dev server (close any libreoffice application running on your system for better experience)
 ```
 python manage.py runserver
 ```
