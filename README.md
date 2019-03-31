@@ -41,6 +41,8 @@ python manage.py runserver
 ```
 - request localhost:8000/fossee2
 <br><br>
+
+
 <b> Important directories and files to make your look up to the code easier:</b>
 ```
 core backend logic - > fossee2/mysite/fossee2/views.py
