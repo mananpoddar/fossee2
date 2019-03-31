@@ -1,6 +1,14 @@
 # fossee2
 
-Project for IITB summer Internship Entrance
+Project for IITB summer Internship Entrance<br>
+Please see the demo video on maximum possible volume with Earphones.<br>
+
+-About the application
+
+It's an application where user is allowed to upload multiple documents<br>
+and refer as and when required.
+
+<b> Setting up the project:</b>
 
 
 - Clone the repo
